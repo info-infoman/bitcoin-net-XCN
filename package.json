@@ -1,6 +1,6 @@
 {
-  "name": "bitcoin-net",
-  "version": "5.2.0",
+  "name": "bitcoin-net-XCN",
+  "version": "5.2.1",
   "description": "Bitcoin P2P networking tht works in Node and the browser",
   "main": "index.js",
   "scripts": {
@@ -17,7 +17,7 @@
   "author": "Matt Bell <mappum@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "bitcoin-protocol": "^4.0.1",
+    "bitcoin-protocol-XCN": "github:info-infoman/bitcoin-protocol-XCN"
     "bitcoin-util": "^2.0.0",
     "debug": "^2.2.0",
     "event-cleanup": "^1.0.3",
