@@ -56,8 +56,8 @@ class Peer extends EventEmitter {
     super()
 
     this.params = params
-    this.protocolVersion = params.protocolVersion || 70012
-    this.minimumVersion = params.minimumVersion || 70001
+    this.protocolVersion = params.protocolVersion || 10200
+    this.minimumVersion = params.minimumVersion || 10000
     this.requireBloom = opts.requireBloom && true
     this.userAgent = opts.userAgent
     if (!opts.userAgent) {
@@ -230,16 +230,16 @@ class Peer extends EventEmitter {
   _sendVersion () {
     this.send('version', {
       version: this.protocolVersion,
-      services: SERVICES_SPV,
+      services: SERVICES_FULL,
       timestamp: Math.round(Date.now() / 1000),
       receiverAddress: {
         services: SERVICES_FULL,
-        address: this.socket.remoteAddress || '0.0.0.0',
+        address: Math.round(Date.now() / 1000) + this.socket.remoteAddress || '0.0.0.0',
         port: this.socket.remotePort || 0
       },
       senderAddress: {
-        services: SERVICES_SPV,
-        address: '0.0.0.0',
+        services: SERVICES_FULL,
+        address: Math.round(Date.now() / 1000) + '0.0.0.0',
         port: this.socket.localPort || 0
       },
       nonce: crypto.pseudoRandomBytes(8),
